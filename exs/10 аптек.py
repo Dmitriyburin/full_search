@@ -31,7 +31,6 @@ def main():
     distances = list(map(lambda p: lonlat_distance(p, (lat, lon)), points))
     max_distance_pt = pt[distances.index(max(distances))]
     org_lat, org_lon = float(max_distance_pt.split(',')[0]), float(max_distance_pt.split(',')[1])
-    print(max_distance_pt, distances.index(max(distances)), points, pt, sep='\n')
     map_param = {
         "ll": ll,
         "spn": ','.join([str(abs(lat - org_lat) * 2), str(abs(lon - org_lon) * 2)]),
