@@ -1,6 +1,6 @@
 import sys
 
-from functions.business import find_business
+from functions.business import find_businesses
 from functions.distance import lonlat_distance
 from functions.geocoder import get_ll_span
 from functions.mapapi_PG import show_map
@@ -12,7 +12,8 @@ def main():
     ll, spn = get_ll_span(toponym_to_find)
     lat, lon = map(float, ll.split(","))
 
-    organization = find_business(ll, spn, "аптека")
+    organization = find_businesses(ll, spn, "аптека")[0]
+    print(organization)
     point = organization["geometry"]["coordinates"]
     org_lat = float(point[0])
     org_lon = float(point[1])

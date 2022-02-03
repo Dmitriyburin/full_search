@@ -3,7 +3,7 @@
 import requests
 
 
-def find_businesses(ll, spn, request, locale="ru_RU"):
+def find_businesses(ll, spn, request, locale="ru_RU", results=1):
     search_api_server = "https://search-maps.yandex.ru/v1/"
     api_key = "dda3ddba-c9ea-4ead-9010-f43fbc15c6e3"
     search_params = {
@@ -12,7 +12,8 @@ def find_businesses(ll, spn, request, locale="ru_RU"):
         "lang": locale,
         "ll": ll,
         "spn": spn,
-        "type": "biz"
+        "type": "biz",
+        "results": results
     }
 
     response = requests.get(search_api_server, params=search_params)
@@ -28,7 +29,3 @@ def find_businesses(ll, spn, request, locale="ru_RU"):
     return organizations
 
 
-def find_business(ll, spn, request, locale="ru_RU"):
-    orgs = find_businesses(ll, spn, request, locale=locale)
-    if len(orgs):
-        return orgs[0]
