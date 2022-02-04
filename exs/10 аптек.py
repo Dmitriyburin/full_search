@@ -21,9 +21,9 @@ def main():
         color = 'pm2grl'
         if "Hours" in organization[i]["properties"]["CompanyMetaData"]:
             color = 'pm2bll'
-            if "TwentyFourHours" in organization[i]["properties"]["CompanyMetaData"]["Hours"]["Availabilities"][0]:
-                if organization[i]["properties"]["CompanyMetaData"]["Hours"]["Availabilities"][0]["TwentyFourHours"]:
-                    color = 'pm2gnl'
+            if organization[i]["properties"]["CompanyMetaData"]["Hours"]\
+                    ["Availabilities"][0].get("TwentyFourHours", False):
+                color = 'pm2gnl'
 
         points.append(point)
         pt.append(f"{org_lat},{org_lon},{color}")
